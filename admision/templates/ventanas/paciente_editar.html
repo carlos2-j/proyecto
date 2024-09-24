@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block title %}Editar Paciente{% endblock %}
+{% load static %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-12 mb-2">
+        <h1 class="text-center text-uppercase"> 
+            Editar Paciente
+            <hr />
+        </h1>
+    </div>
+</div>
+
+<div class="row justify-content-md-center">
+    <form action="{% url 'editar_paciente' paciente.id %}" method="POST" class="row justify-content-md-center g-3">
+        {% csrf_token %}
+
+        <div class="col-md-4">
+            <label for="nombre" class="form-label">Nombre del Paciente</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" value="{{ paciente.nombre_paciente }}" required>
+        </div>
+
+        <div class="col-md-4">
+            <label for="apellido" class="form-label">Apellido del Paciente:</label>
+            <input type="text" class="form-control" id="apellido" name="apellido" value="{{ paciente.apellido_paciente }}" required>
+        </div>
+
+        <div class="col-md-4">
+            <label for="tipoid" class="form-label">Tipo de Identificación:</label>
+            <select name="tipoid" class="form-control" id="tipoid" required>
+                <option value="CC" {% if paciente.tipo_identificacion == "CC" %}selected{% endif %}>Cédula</option>
+                <option value="PP" {% if paciente.tipo_identificacion == "PP" %}selected{% endif %}>Pasaporte</option>
+                <option value="CE" {% if paciente.tipo_identificacion == "CE" %}selected{% endif %}>Cédula de Extranjería</option>
+                <option value="TE" {% if paciente.tipo_identificacion == "TE" %}selected{% endif %}>Tarjeta de Extrajería</option>
+                <option value="TI" {% if paciente.tipo_identificacion == "TI" %}selected{% endif %}>Tarjeta de Identidad</option>
+                <option value="NIT" {% if paciente.tipo_identificacion == "NIT" %}selected{% endif %}>Número de Identificación Tributaria</option>
+                <option value="RC" {% if paciente.tipo_identificacion == "RC" %}selected{% endif %}>Registro Civil</option>
+                <option value="otro" {% if paciente.tipo_identificacion == "otro" %}selected{% endif %}>Otro</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="numeroid" class="form-label">Número de Identificación:</label>
+            <input type="text" class="form-control" id="numeroid" name="numeroid" value="{{ paciente.numero_identificacion }}" required>
+        </div>
+
+        <div class="col-md-4">
+            <label for="edad" class="form-label">Edad del Paciente:</label>
+            <input type="number" class="form-control" id="edad" name="edad" min="1" value="{{ paciente.edad_paciente }}" required>
+        </div>
+
+        <div class="col-md-4">
+            <label for="genero" class="form-label">Género:</label>
+            <select id="genero" class="form-control" name="genero" required>
+                <option value="masculino" {% if paciente.genero_paciente == "masculino" %}selected{% endif %}>Masculino</option>
+                <option value="femenino" {% if paciente.genero_paciente == "femenino" %}selected{% endif %}>Femenino</option>
+                <option value="otro" {% if paciente.genero_paciente == "otro" %}selected{% endif %}>Otro</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="direccion" class="form-label">Dirección:</label>
+            <input type="text" class="form-control" id="direccion" name="direccion" value="{{ paciente.direccion_paciente }}" required>
+        </div>
+
+        <div class="col-md-4">
+            <label for="telefono" class="form-label">Teléfono:</label>
+            <input type="tel" class="form-control" id="telefono" name="telefono" value="{{ paciente.telefono_paciente }}" required>
+        </div>
+
+        <div class="col-md-4">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ paciente.correo_paciente }}">
+        </div>
+
+        <div class="col-md-4">
+            <label for="tiposangre" class="form-label">Tipo de Sangre:</label>
+            <select name="tiposangre" id="tiposangre" class="form-control" required>
+                <option value="A+" {% if paciente.tipo_sangre == "A+" %}selected{% endif %}>A+</option>
+                <option value="A-" {% if paciente.tipo_sangre == "A-" %}selected{% endif %}>A-</option>
+                <option value="B+" {% if paciente.tipo_sangre == "B+" %}selected{% endif %}>B+</option>
+                <option value="B-" {% if paciente.tipo_sangre == "B-" %}selected{% endif %}>B-</option>
+                <option value="AB+" {% if paciente.tipo_sangre == "AB+" %}selected{% endif %}>AB+</option>
+                <option value="AB-" {% if paciente.tipo_sangre == "AB-" %}selected{% endif %}>AB-</option>
+                <option value="O+" {% if paciente.tipo_sangre == "O+" %}selected{% endif %}>O+</option>
+                <option value="O-" {% if paciente.tipo_sangre == "O-" %}selected{% endif %}>O-</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="fecha" class="form-label">Fecha de Nacimiento:</label>
+            <input type="date" class="form-control" id="fecha" name="fecha" value="{{ paciente.fecha_nacimiento|date:'Y-m-d' }}" required>
+        </div>
+
+        <div class="d-grid gap-2 col-8 mx-auto mt-5">
+            <button class="btn btn-primary" type="submit">
+                Guardar Cambios
+                <i class="bi bi-arrow-clockwise"></i>
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

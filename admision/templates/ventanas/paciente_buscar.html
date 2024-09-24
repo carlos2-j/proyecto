@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+<!---->
+{% block title %}Admision{% endblock %}
+<!---->
+{%block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Paciente</title>
+</head>
+<body>
+    <h2>Buscar Paciente</h2>
+    <form action="{% url 'buscar_paciente' %}" method="POST">
+        {% csrf_token %}
+        <label for="busqueda">Buscar por Nombre o Apellido:</label>
+        <input type="text" id="busqueda" name="busqueda" required>
+        <button type="submit">Buscar</button>
+    </form>
+</body>
+</html>
+
+{% endblock %}

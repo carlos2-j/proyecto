@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+<!---->
+{% block title %}Admision{% endblock %}
+<!---->
+{%block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+</head>
+<body>
+    <h1> ADMISION</h1>
+    <a href="{% url 'agregar_paciente' %}">Agregar Paciente</a>
+    <a href="{% url 'listado_pacientes' %}">Ver Listado de Pacientes</a>
+    <a href="{% url 'buscar_paciente' %}">Buscar Paciente</a>
+    
+</body>
+</html>
+{% endblock %}

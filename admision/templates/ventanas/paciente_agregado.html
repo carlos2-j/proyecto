@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+<!---->
+{% block title %}Admision{% endblock %}
+<!---->
+{%block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paciente Agregado</title>
+</head>
+<body>
+    <h2>Paciente Agregado Exitosamente</h2>
+    <p>El paciente {{ paciente.nombre }} {{ paciente.apellido }} ha sido agregado con éxito.</p>
+
+    <a href="{% url 'listado_pacientes' %}">Ver Listado de Pacientes</a>
+    <a href="{% url 'agregar_paciente' %}">Agregar Otro Paciente</a>
+</body>
+</html>
+{% endblock %}

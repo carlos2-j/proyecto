@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Listado de Pacientes{% endblock %}
+
+{% block content %}
+<div class="col-md-12 mb-2">
+    <h2 class="text-center text-uppercase">
+        <a
+            style="color: #6188f1; float: left; padding: 0px 10px 0px 0px"
+            href="{% url 'agregar_paciente' %}>
+            <span><i class="bi bi-arrow-left-circle"></i></span>
+        </a>
+        Lista de Pacientes
+    </h2>
+</div>
+
+{% if pacientes %}
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Tipo de Identificación</th>
+                <th>Número de Identificación</th>
+                <th>Edad</th>
+                <th>Género</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>E-mail</th>
+                <th>Tipo de Sangre</th>
+                <th>Fecha de Nacimiento</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paciente in pacientes %}
+            <tr>
+                <td>{{ paciente.nombre_paciente }}</td>
+                <td>{{ paciente.apellido_paciente }}</td>
+                <td>{{ paciente.tipo_identificacion }}</td>
+                <td>{{ paciente.numero_identificacion }}</td>
+                <td>{{ paciente.edad_paciente }}</td>
+                <td>{{ paciente.genero_paciente }}</td>
+                <td>{{ paciente.direccion_paciente }}</td>
+                <td>{{ paciente.telefono_paciente }}</td>
+                <td>{{ paciente.correo_paciente }}</td>
+                <td>{{ paciente.tipo_sangre }}</td>
+                <td>{{ paciente.fecha_nacimiento }}</td>
+                <td>
+                    <span style="display: flex; justify-content: space-between">
+                        <a href="{% url 'detalle_paciente' paciente.id %}" class="btn btn-info btn-sm" title="Ver Detalles del Paciente">
+                            <i class="bi bi-person-bounding-box"></i>
+                        </a>
+                        <a href="{% url 'editar_paciente' paciente.id %}" class="btn btn-warning btn-sm" title="Editar datos del Paciente">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="text-center">No hay pacientes registrados 😭.</p>
+{% endif %}
+
+<a href="{% url 'agregar_paciente' %}" class="btn btn-success">Agregar Paciente</a>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Detalle del Paciente{% endblock %}
+{% load static %}
+
+{% block content %}
+<div class="row justify-content-md-center">
+    <div class="col-md-5 mb-2">
+        <div class="card shadow">
+            <div class="card-body">
+                <h2>Detalle del Paciente</h2>
+                <p><strong>Nombre:</strong> {{ paciente.nombre_paciente }}</p>
+                <p><strong>Apellido:</strong> {{ paciente.apellido_paciente }}</p>
+                <p><strong>Tipo de Identificación:</strong> {{ paciente.tipo_identificacion }}</p>
+                <p><strong>Número de Identificación:</strong> {{ paciente.numero_identificacion }}</p>
+                <p><strong>Edad:</strong> {{ paciente.edad_paciente }}</p>
+                <p><strong>Género:</strong> {{ paciente.genero_paciente }}</p>
+                <p><strong>Dirección:</strong> {{ paciente.direccion_paciente }}</p>
+                <p><strong>Teléfono:</strong> {{ paciente.telefono_paciente }}</p>
+                <p><strong>Correo Electrónico:</strong> {{ paciente.correo_paciente }}</p>
+                <p><strong>Tipo de Sangre:</strong> {{ paciente.tipo_sangre }}</p>
+                <p><strong>Fecha de Nacimiento:</strong> {{ paciente.fecha_nacimiento }}</p>
+
+                <hr />
+
+                <a class="btn btn-primary" href="{% url 'editar_paciente' paciente.id %}">Editar</a>
+                <a class="btn btn-secondary" href="{% url 'listado_pacientes' %}">Volver al Listado</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
