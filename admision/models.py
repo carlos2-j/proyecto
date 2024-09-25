@@ -22,6 +22,7 @@ class paciente(models.Model):
     tipo_sangre = models.CharField(max_length=20)
     fecha_nacimiento = models.DateField()
 
+
 # Modelo para EPS-Paciente con estado
 class eps_paciente(models.Model):
     paciente = models.ForeignKey(paciente, on_delete=models.CASCADE)
